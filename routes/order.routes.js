@@ -22,6 +22,6 @@ router.get("/all", authAndAdmin, orderController.getAll)
 
 // GET MONTHLY INCOME
 
-router.get("/income", authAndAdmin, orderController.income);
+// router.get("/income", authAndAdmin, orderController.income);
 
 module.exports = router;

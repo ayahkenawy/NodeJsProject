@@ -74,34 +74,34 @@ class Order {
             res.send({ apiStatus: false, data: e.message, message: "Error Deleting Order" })
         }
     }
-    static income = async (req, res) => {
-        const date = new Date();
-        const lastMonth = new Date(date.setMonth(date.getMonth() - 1));
-        const previousMonth = new Date(new Date().setMonth(lastMonth.getMonth() - 1));
+    // static income = async (req, res) => {
+    //     const date = new Date();
+    //     const lastMonth = new Date(date.setMonth(date.getMonth() - 1));
+    //     const previousMonth = new Date(new Date().setMonth(lastMonth.getMonth() - 1));
 
-        try {
-            const income = await orderModel.aggregate([
-                { $match: { createdAt: { $gte: previousMonth } } },
-                {
-                    $project: {
-                        month: { $month: "$createdAt" },
-                        sales: "$amount",
-                    },
-                },
-                {
-                    $group: {
-                        _id: "$month",
-                        total: { $sum: "$sales" },
-                    },
-                },
-            ]);
-            res.send({
-                apiStatus: true, data: income, message: "Income Calculated Successfuly"
-            })
-        } catch (e) {
-            res.send({ apiStatus: false, data: e.message, message: "Error Calculate Income" })
-        }
-    }
+    //     try {
+    //         const income = await orderModel.aggregate([
+    //             { $match: { createdAt: { $gte: previousMonth } } },
+    //             {
+    //                 $project: {
+    //                     month: { $month: "$createdAt" },
+    //                     sales: "$amount",
+    //                 },
+    //             },
+    //             {
+    //                 $group: {
+    //                     _id: "$month",
+    //                     total: { $sum: "$sales" },
+    //                 },
+    //             },
+    //         ]);
+    //         res.send({
+    //             apiStatus: true, data: income, message: "Income Calculated Successfuly"
+    //         })
+    //     } catch (e) {
+    //         res.send({ apiStatus: false, data: e.message, message: "Error Calculate Income" })
+    //     }
+    // }
 
 }
 module.exports = Order
