@@ -105,8 +105,8 @@ class User{
     }
     static editUser = async(req,res)=>{
         try{
-            const user = await userModel.findByIdAndUpdate(req.params.id, req.body, {
-                runValidators:true})
+            const user = await userModel.findByIdAndUpdate(req.params.id, {
+                $set: req.body},{ new: true })
             res.send({
                 apiStatus:true, data: user, message:"Data Updated Successfuly"
             })

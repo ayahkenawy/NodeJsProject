@@ -11,7 +11,7 @@ router.delete("/all/:id",auth, userController.delSingle)
 router.get("/me", auth , userController.me)
 router.post("/logout", auth,userController.logout)
 router.post("/logoutAll", auth,userController.logoutAll)
-router.post("/editUser",auth,userController.editUser)
+router.post("/editUser/:id",auth,userController.editUser)
 router.post('/profile',upload.single('image'), (req,res)=> {
     res.send(req.file)
 })
