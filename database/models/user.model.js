@@ -20,7 +20,7 @@ const userSchema = mongoose.Schema({
     password:{
         required:true,
         type:String,
-        match:'/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/'
+        // match:"/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/"
 
     },
     birthDate:{
@@ -29,9 +29,17 @@ const userSchema = mongoose.Schema({
     },
     userName:{
         type:String,
-        unique:true
+        unique:true,
+        required:true
     },
     image:{
+        type:String
+    },
+    role:{
+        type:Boolean,
+        default:false
+    },
+    otp:{
         type:String
     },
     tokens:[{
@@ -54,6 +62,22 @@ userSchema.methods.toJSON = function () {
 
 userSchema.pre("save", async function(){
     if(this.isModified("password"))
-    
+    this.password = await bcrypt.hash(this.password, parseInt(process.env.salt))
 }
 )
+userSchema.statics.login = async(email, password)=>{
+    const userData = await user.findOne({email})
+    if(!userData) throw new Error('Invalid Email')
+    const isValid = await bcrypt.compare(password, userData.password)
+    if(!isValid) throw new Error("Invalid Password")
+    return userData
+}
+userSchema.methods.generateToken = async function(){
+    const user = this
+    const token = jwt.sign({_id:user._id}, process.env.JWTKEY )
+    user.tokens = user.tokens.concat({token})
+    await user.save()
+    return token
+}
+const user = mongoose.model("user", userSchema)
+module.exports = user
