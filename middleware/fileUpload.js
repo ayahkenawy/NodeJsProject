@@ -21,8 +21,9 @@ const upload = multer({
     limits:{fileSize:20000000},
     fileFilter: function(req, file, cb){
         // console.log( path.extname(file.originalname));
-        if(path.extname(file.originalname)!=".png" || path.extname(file.originalname)!=".jpg")
-            return cb(new Error("Invalid Extention"), false)
+        if(path.extname(file.originalname)!=".png") 
+              if(path.extname(file.originalname)!=".jpg")
+                     return cb(new Error("Invalid Extention"), false)
         cb(null, true) 
     }
 })

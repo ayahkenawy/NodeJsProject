@@ -33,85 +33,88 @@ class User{
             })
         }
         catch(e){
-            res.send({apiStatus:false, data:e.message, message:"invalid login"})
+            res.send({apiStatus:false, data:e.message, message:"Invalid Login"})
         }
     }
     static me = async(req,res)=>{
-        res.send({apiStatus:true,data:req.user, message:'data featched'})
+        res.send({apiStatus:true,data:req.user, message:'Data Fetched'})
     }
     static logout = async(req,res)=>{
         try{
             req.user.tokens = req.user.tokens.filter( t => t.token != req.token )
             await req.user.save()
-            res.send({apiStatus:true, data:{}, message:"logged out"})
+            res.send({apiStatus:true, data:{}, message:"Logged Out"})
         }
         catch(e){
-            res.send({apiStatus:false, data:e.message, message:"error in logout"})
+            res.send({apiStatus:false, data:e.message, message:"Error In Logout"})
         }
     }
     static logoutAll = async(req,res)=>{
         try{
             req.user.tokens = []
             await req.user.save()
-            res.send({apiStatus:true, data:{}, message:"logged out"})
+            res.send({apiStatus:true, data:{}, message:"Logged Out"})
         }
         catch(e){
-            res.send({apiStatus:false, data:e.message, message:"error in logout"})
+            res.send({apiStatus:false, data:e.message, message:"Error In Logout"})
         }
     }
     static getAll = async(req,res)=>{
         try{
             const users = await userModel.find() //statics
             res.send({
-                apiStatus:true, data: users, message:"data featched successfuly"
+                apiStatus:true, data: users, message:"Data Fetched Successfuly"
             })
         }
         catch(e){
-            res.send({apiStatus:false, data:e.message, message:"error fetching user"})
+            res.send({apiStatus:false, data:e.message, message:"Error Fetching User"})
         }
     }
     static getSingle = async(req,res)=>{
         try{
             const user = await userModel.findById(req.params.id) //statics
             res.send({
-                apiStatus:true, data: user, message:"data featched successfuly"
+                apiStatus:true, data: user, message:"Data Fetched Successfuly"
             })
         }
         catch(e){
-            res.send({apiStatus:false, data:e.message, message:"error fetching user"})
+            res.send({apiStatus:false, data:e.message, message:"Error Fetching User"})
         }
     }
     static delAll = async(req,res)=>{
         try{
             await userModel.deleteMany()
             res.send({
-                apiStatus:true, data: [], message:"data deleted successfuly"
+                apiStatus:true, data: [], message:"Data Deleted Successfuly"
             })
         }
         catch(e){
-            res.send({apiStatus:false, data:e.message, message:"error deleting user"})
+            res.send({apiStatus:false, data:e.message, message:"Error Deleting User"})
         }
     }
     static delSingle = async(req,res)=>{
         try{
             const user = await userModel.findByIdAndDelete(req.params.id)
             res.send({
-                apiStatus:true, data: user, message:"data deleted successfuly"
+                apiStatus:true, data: user, message:"Data Deleted Successfuly"
             })
         }
         catch(e){
-            res.send({apiStatus:false, data:e.message, message:"error deleting user"})
+            res.send({apiStatus:false, data:e.message, message:"Error Deleting User"})
         }
     }
-    static profileImg = async (req, res) =>{
+    static editUser = async(req,res)=>{
         try{
-            req.user.image = req.file.path
-            await req.user.save()
-            res.send({apiStatus:true, data:req.user, message:"image uploaded"})
+            const user = await userModel.findByIdAndUpdate(req.params.id, req.body, {
+                runValidators:true})
+            res.send({
+                apiStatus:true, data: user, message:"Data Updated Successfuly"
+            })
         }
         catch(e){
-            res.send({apiStatus:false, data:e.message, message:"error deleting user"})
+            res.send({apiStatus:false, data:e.message, message:"Error Updating User"})
         }
     }
+
 }
 module.exports = User
