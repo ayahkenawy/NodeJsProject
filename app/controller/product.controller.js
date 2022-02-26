@@ -64,7 +64,7 @@ class Product {
             })
         }
         catch (e) {
-            res.send({ apiStatus: false, data: e.message, message: "Error Fetching User" })
+            res.send({ apiStatus: false, data: e.message, message: "Error Fetching Product" })
         }
     }
     // delete all products
@@ -76,7 +76,7 @@ class Product {
             })
         }
         catch (e) {
-            res.send({ apiStatus: false, data: e.message, message: "Error Deleting User" })
+            res.send({ apiStatus: false, data: e.message, message: "Error Deleting Product" })
         }
     }
     // delete single product
@@ -88,7 +88,7 @@ class Product {
             })
         }
         catch (e) {
-            res.send({ apiStatus: false, data: e.message, message: "Error Deleting User" })
+            res.send({ apiStatus: false, data: e.message, message: "Error Deleting Product" })
         }
     }
    
