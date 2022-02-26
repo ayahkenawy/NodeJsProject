@@ -10,5 +10,7 @@ const productRoutes =  require("../../routes/product.routes")
 app.use("/product",productRoutes)
 const orderRoutes =  require("../../routes/order.routes")
 app.use("/order",orderRoutes)
+const cartRoutes =  require("../../routes/cart.routes")
+app.use("/cart",cartRoutes)
 app.get("*", (req,res)=> res.send( {error:"Invalid URL"} ) )
 module.exports=app
