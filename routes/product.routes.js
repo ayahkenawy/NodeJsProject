@@ -5,9 +5,7 @@ const upload = require("../middleware/productPicUpload")
 
 //CREATE
 
-router.post("/add", auth,upload.single('image'), (req,res)=> {
-    res.send(req.file)
-}, productController.createProduct)
+router.post("/add", auth,upload.single('image'), productController.createProduct)
 
 //UPDATE
 router.put("/update/:id", auth, productController.updateProduct)

@@ -4,6 +4,7 @@ class Product {
     static createProduct = async (req, res) => {
         try {
             const product = new productModel(req.body)
+          product.img =   req.file.path
             await product.save()
            
             res.send({
