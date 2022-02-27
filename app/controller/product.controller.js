@@ -4,9 +4,9 @@ class Product {
     static createProduct = async (req, res) => {
         try {
             const product = new productModel(req.body)
-          product.img =   req.file.path
+            product.img = req.file.path
             await product.save()
-           
+
             res.send({
                 apiStatus: true, data: { product }, message: "Data Added Successfuly"
             })
@@ -59,7 +59,7 @@ class Product {
     // get single product
     static getSingle = async (req, res) => {
         try {
-            const product  = await productModel.findById(req.params.id) 
+            const product = await productModel.findById(req.params.id)
             res.send({
                 apiStatus: true, data: product, message: "Data Fetched Successfuly"
             })
@@ -92,7 +92,7 @@ class Product {
             res.send({ apiStatus: false, data: e.message, message: "Error Deleting Product" })
         }
     }
-   
+
 
 }
-module.exports =Product
+module.exports = Product

@@ -5,15 +5,15 @@ const upload = require("../middleware/productPicUpload")
 
 //CREATE
 
-router.post("/add", auth,upload.single('image'), productController.createProduct)
+router.post("/add", auth, upload.single('image'), productController.createProduct)
 
 //UPDATE
 router.put("/update/:id", auth, productController.updateProduct)
 
 //DELETE Single product
-router.delete("/all/:id",auth, productController.delSingle)
+router.delete("/all/:id", auth, productController.delSingle)
 // delete all
-router.delete("/all",auth, productController.delAll)
+router.delete("/all", auth, productController.delAll)
 
 //GET PRODUCT
 router.get("/find/:id", productController.getSingle)
