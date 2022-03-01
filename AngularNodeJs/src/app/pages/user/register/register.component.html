@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="inner">
+            <img src="../../../../assets/images/image-1.png" alt="" class="image-1">
+            <!-- <div> {{registerForm.value|json}}</div> -->
+            
+            <form #registerForm="ngForm" (ngSubmit)="handleRegister(registerForm)">
+                <h3>Register New Account?</h3>
+                <div [ngClass]="{'alert':true, 'alert-primary':flag, 'alert-danger':!flag}" *ngIf="msg!=''">{{msg}}</div>
+                <div class="form-holder">
+                    <!-- <div>{{name.valid}}-{{name.invalid}}-{{name.dirty}}-{{name.touched}}</div> -->
+                    <span class="lnr lnr-user"></span>
+                    <input type="text" class="form-control" placeholder="Name" name="name" required minlength="3"
+                        maxlength="10" #name="ngModel" ngModel>
+                </div>
+                <div *ngIf="name.invalid&& (name.dirty||name.touched||registerForm.submitted)" class="alert alert-danger mb-3">
+                    <!-- {{name.errors|json}} -->
+                    <p *ngIf="name.errors?.['required']">Name Is Required</p>
+                    <p *ngIf="name.errors?.['minlength']">Min Length Is 3</p>
+                    <p *ngIf="name.errors?.['maxlength']">Max Length Is 10</p>
+                </div>
+                <div class="form-holder">
+                    <span class="lnr lnr-user"></span>
+                    <input type="text" class="form-control" placeholder="Username" name="userName" required
+                        minlength="3" maxlength="10" #userName="ngModel" ngModel>
+                </div>
+                <div *ngIf="userName.invalid && (userName.dirty||userName.touched||registerForm.submitted)" class="alert alert-danger mb-3">
+                    <p *ngIf="userName.errors?.['required']">User Name Is Required</p>
+                    <p *ngIf="userName.errors?.['minlength']">Min Length Is 3</p>
+                    <p *ngIf="userName.errors?.['maxlength']">Max Length Is 10</p>
+                </div>
+                <div class="form-holder">
+                    <span class="lnr lnr-phone-handset"></span>
+                    <input type="date" class="form-control" placeholder="BirthDate" name="birthDate"
+                        #birthDate="ngModel" required ngModel>
+                </div>
+                <div *ngIf="birthDate.invalid && (birthDate.dirty||birthDate.touched||registerForm.submitted)" class="alert alert-danger mb-3">
+                    <p *ngIf="birthDate.errors?.['required']">birthDate Is Required</p>
+                </div>
+                <div class="form-holder">
+                    <span class="lnr lnr-envelope"></span>
+                    <input type="email" class="form-control" placeholder="Email" name="email" required email
+                        minlength="3" #email="ngModel" ngModel>
+                </div>
+                <div *ngIf="email.invalid && (email.dirty||email.touched||registerForm.submitted)" class="alert alert-danger mb-3">
+                    <p *ngIf="email.errors?.['required']">Email Is Required</p>
+                    <p *ngIf="email.errors?.['minlength']">Min Length Is 3</p>
+                    <p *ngIf="email.errors?.['email']">Invalid Email</p>
+                </div>
+                <div class="form-holder">
+                    <span class="lnr lnr-lock"></span>
+                    <input type="password" class="form-control" placeholder="Password" name="password"
+                    pattern="/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/"
+                        #password="ngModel" required minlength="3" maxlength="10" ngModel>
+                </div>
+                <div *ngIf="password.invalid && (password.dirty||password.touched||registerForm.submitted)" class="alert alert-danger mb-3">
+                    <p *ngIf="password.errors?.['required']">Password Is Required</p>
+                    <p *ngIf="password.errors?.['minlength']">Min Length Is 3</p>
+                    <p *ngIf="password.errors?.['maxlength']">Max Length Is 10</p>
+                    <p *ngIf="password.errors?.['pattern']">Minimum eight characters, at least one letter, one number and one special character</p>
+                </div>
+                <div class="form-holder">
+                    <span class="lnr lnr-lock"></span>
+                    <input type="password" class="form-control" placeholder="Confirm Password" name="confirmPassword" #confPassword="ngModel"
+                    pattern="/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/"
+                         required minlength="3" maxlength="10" ngModel>
+                </div>
+                <div *ngIf="confPassword.invalid && (confPassword.dirty||confPassword.touched||registerForm.submitted)" class="alert alert-danger mb-3">
+                    <p *ngIf="confPassword.errors?.['required']">Confirm Password Is Required</p>
+                    <p *ngIf="confPassword.errors?.['minlength']">Min Length Is 3</p>
+                    <p *ngIf="confPassword.errors?.['maxlength']">Max Length Is 10</p>
+                    <p *ngIf="password.errors?.['pattern']">Minimum eight characters, at least one letter, one number and one special character</p>
+                </div>
+                <div class="form-holder">
+                    <select class="form-control" name="gender" #gender="ngModel" required ngModel>
+                        <option value="1" selected>Male</option>
+                        <option value="0">Female</option>
+                    </select>
+                </div>
+                <div *ngIf="gender.invalid && (gender.dirty||gender.touched||registerForm.submitted)" class="alert alert-danger mb-3">
+                    <p *ngIf="gender.errors?.['required']">Gender Is Required</p>
+                </div>
+                <button>
+                    <span>Register</span>
+                </button>
+            </form>
+            <img src="../../../../assets/images/image-2.png" alt="" class="image-2">
+        </div>
+
+    </div>
+
+    <script src="../../../../assets/js/jquery-3.3.1.min.js"></script>
+    <script src="../../../../assets/js/main.js"></script>
+</body>
+
+</html>
