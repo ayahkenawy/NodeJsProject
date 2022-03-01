@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="inner">
+            <img src="../../../../assets/images/image-1.png" alt="" class="image-1">
+            <!-- <div> {{registerForm.value|json}}</div> -->
+            <form #registerForm ="ngForm" (ngSubmit)="handleRegister(registerForm)">
+                <h3>Register New Account?</h3>
+                <div class="form-holder">
+                    <span class="lnr lnr-user"></span>
+                    <input type="text" class="form-control" placeholder="Name" name="name" ngModel>
+                </div>
+                <div class="form-holder">
+                    <span class="lnr lnr-user"></span>
+                    <input type="text" class="form-control" placeholder="Username" name="userName" ngModel>
+                </div>
+                <div class="form-holder">
+                    <span class="lnr lnr-phone-handset"></span>
+                    <input type="date" class="form-control" placeholder="BirthDate" name="birthDate" ngModel>
+                </div>
+                <div class="form-holder">
+                    <span class="lnr lnr-envelope"></span>
+                    <input type="text" class="form-control" placeholder="Email" name="email" ngModel>
+                </div>
+                <div class="form-holder">
+                    <span class="lnr lnr-lock"></span>
+                    <input type="password" class="form-control" placeholder="Password" name="password" ngModel>
+                </div>
+                <div class="form-holder">
+                    <span class="lnr lnr-lock"></span>
+                    <input type="password" class="form-control" placeholder="Confirm Password" ngModel>
+                </div>
+                <div class="form-holder">
+                    <select class="form-control" name="gender" ngModel>
+                        <option value="1" selected >Male</option>
+                        <option value="0">Female</option>
+                    </select>
+                </div>
+                <button>
+                    <span>Register</span>
+                </button>
+            </form>
+            <img src="../../../../assets/images/image-2.png" alt="" class="image-2">
+        </div>
+
+    </div>
+
+    <script src="../../../../assets/js/jquery-3.3.1.min.js"></script>
+    <script src="../../../../assets/js/main.js"></script>
+</body>
+
+</html>
