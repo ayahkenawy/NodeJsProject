@@ -10,4 +10,7 @@ export class AuthService {
   register(data: any): Observable<any> {
     return this._http.post(`${this.commoneApiURL}user/register`, data)
   }
+  login(data:any):Observable<any>{
+    return this._http.post(`${this.commoneApiURL}user/login`, data)
+  }
 }
