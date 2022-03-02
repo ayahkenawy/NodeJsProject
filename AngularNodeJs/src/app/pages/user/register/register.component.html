@@ -59,26 +59,24 @@
                 <div class="form-holder">
                     <span class="lnr lnr-lock"></span>
                     <input type="password" class="form-control" placeholder="Password" name="password"
-                    pattern="/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/"
-                        #password="ngModel" required minlength="3" maxlength="10" ngModel>
+                        #password="ngModel" required minlength="3" maxlength="20" ngModel>
                 </div>
                 <div *ngIf="password.invalid && (password.dirty||password.touched||registerForm.submitted)" class="alert alert-danger mb-3">
                     <p *ngIf="password.errors?.['required']">Password Is Required</p>
                     <p *ngIf="password.errors?.['minlength']">Min Length Is 3</p>
-                    <p *ngIf="password.errors?.['maxlength']">Max Length Is 10</p>
-                    <p *ngIf="password.errors?.['pattern']">Minimum eight characters, at least one letter, one number and one special character</p>
+                    <p *ngIf="password.errors?.['maxlength']">Max Length Is 20</p>
+                    <!-- <p *ngIf="password.errors?.['pattern']">Minimum eight characters, at least one letter, one number and one special character</p> -->
                 </div>
                 <div class="form-holder">
                     <span class="lnr lnr-lock"></span>
-                    <input type="password" class="form-control" placeholder="Confirm Password" name="confirmPassword" #confPassword="ngModel"
-                    pattern="/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/"
-                         required minlength="3" maxlength="10" ngModel>
+                    <input type="password" class="form-control" placeholder="Confirm Password" name="confirmPassword" #confPassword="ngModel"          
+                         required minlength="3" maxlength="20" ngModel>
                 </div>
                 <div *ngIf="confPassword.invalid && (confPassword.dirty||confPassword.touched||registerForm.submitted)" class="alert alert-danger mb-3">
                     <p *ngIf="confPassword.errors?.['required']">Confirm Password Is Required</p>
                     <p *ngIf="confPassword.errors?.['minlength']">Min Length Is 3</p>
-                    <p *ngIf="confPassword.errors?.['maxlength']">Max Length Is 10</p>
-                    <p *ngIf="password.errors?.['pattern']">Minimum eight characters, at least one letter, one number and one special character</p>
+                    <p *ngIf="confPassword.errors?.['maxlength']">Max Length Is 20</p>
+                    <!-- <p *ngIf="password.errors?.['pattern']">Minimum eight characters, at least one letter, one number and one special character</p> -->
                 </div>
                 <div class="form-holder">
                     <select class="form-control" name="gender" #gender="ngModel" required ngModel>
