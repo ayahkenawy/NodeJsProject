@@ -25,7 +25,7 @@ export class AuthService {
     return this._http.get(`${this.commoneApiURL}category/all`)
   }
   getProductByCategoryId(catId:number):Observable<any>{
-    return this._http.get(`${this.commoneApiURL}product/${catId}`)
+    return this._http.get(`${this.commoneApiURL}product/all/${catId}`)
   }
   getSingleProduct(productId:number):Observable<any>{
     return this._http.get(`${this.commoneApiURL}product/find/${productId}`)

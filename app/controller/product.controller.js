@@ -4,7 +4,7 @@ class Product {
     static createProduct = async (req, res) => {
         try {
             const product = new productModel(req.body)
-            // product.img = req.file.path
+             product.img = req.file.path
             await product.save()
 
             res.send({
@@ -34,7 +34,20 @@ class Product {
             res.send({ apiStatus: false, data: e.message, message: "Error Updating Product" })
         }
     }
-    //get all products
+    //get all products By Cat ID
+    static getAllByCatId = async (req, res) => {
+        try {
+               const products = await productModel.find();
+            
+            res.send({
+                apiStatus: true, data: products, message: "Data Fetched Successfuly"
+            })
+        }
+        catch (e) {
+            res.send({ apiStatus: false, data: e.message, message: "Error Fetching Products" })
+        }
+    }
+    // get all Products
     static getAll = async (req, res) => {
         const Category = req.params.catId;
         try {
