@@ -33,7 +33,7 @@ class User{
             })
         }
         catch(e){
-            console.log("1")
+            // console.log("1")
             res.status(500).send({apiStatus:false, data:e.message, message:"Invalid Login"})
         }
     }

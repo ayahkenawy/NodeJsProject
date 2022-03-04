@@ -13,8 +13,8 @@ const productSchema = mongoose.Schema({
     department: {
         type: String
     },
-    categories:
-        { type: Array },
+    categorYID:
+        { type: String },
     size:
         { type: String },
     color:
