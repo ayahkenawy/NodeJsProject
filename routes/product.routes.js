@@ -19,7 +19,7 @@ router.delete("/all", auth, productController.delAll)
 router.get("/find/:id", productController.getSingle)
 
 //GET ALL PRODUCTS
-router.get("/all", productController.getAll)
+router.get("/all/:catId", productController.getAll)
 
 // //upload img
 // router.post('/productImg',upload.single('image'), (req,res)=> {

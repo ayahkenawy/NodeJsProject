@@ -11,6 +11,9 @@ import { FooterComponent } from './shared/footer/footer.component';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { HomeComponent } from './pages/home/home.component'
 import { AuthInterceptor } from './providers/interceptors/auth.interceptor';
+import { ViewCategoriesComponent } from './pages/category/view-categories/view-categories.component';
+import { ProductsComponent } from './pages/product/products/products.component';
+import { SingleProductComponent } from './pages/product/single-product/single-product.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { AuthInterceptor } from './providers/interceptors/auth.interceptor';
     LoginComponent,
     NavbarComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    ViewCategoriesComponent,
+    ProductsComponent,
+    SingleProductComponent
   ],
   imports: [
     BrowserModule,

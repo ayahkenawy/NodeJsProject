@@ -4,7 +4,7 @@ class Product {
     static createProduct = async (req, res) => {
         try {
             const product = new productModel(req.body)
-            product.img = req.file.path
+            // product.img = req.file.path
             await product.save()
 
             res.send({
@@ -36,14 +36,12 @@ class Product {
     }
     //get all products
     static getAll = async (req, res) => {
-        const Category = req.query.category;
+        const Category = req.params.catId;
         try {
             let products;
             if (Category) {
                 products = await productModel.find({
-                    categories: {
-                        $in: [Category],
-                    },
+                    categoryId: Category,
                 });
             } else {
                 products = await productModel.find();
