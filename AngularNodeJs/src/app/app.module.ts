@@ -14,6 +14,7 @@ import { AuthInterceptor } from './providers/interceptors/auth.interceptor';
 import { ViewCategoriesComponent } from './pages/category/view-categories/view-categories.component';
 import { ProductsComponent } from './pages/product/products/products.component';
 import { SingleProductComponent } from './pages/product/single-product/single-product.component';
+import { Error404Component } from './pages/error404/error404.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { SingleProductComponent } from './pages/product/single-product/single-pr
     HomeComponent,
     ViewCategoriesComponent,
     ProductsComponent,
-    SingleProductComponent
+    SingleProductComponent,
+    Error404Component
   ],
   imports: [
     BrowserModule,

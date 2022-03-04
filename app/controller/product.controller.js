@@ -34,8 +34,8 @@ class Product {
             res.send({ apiStatus: false, data: e.message, message: "Error Updating Product" })
         }
     }
-    //get all products By Cat ID
-    static getAllByCatId = async (req, res) => {
+    //get all products 
+    static getAll = async (req, res) => {
         try {
                const products = await productModel.find();
             
@@ -47,8 +47,8 @@ class Product {
             res.send({ apiStatus: false, data: e.message, message: "Error Fetching Products" })
         }
     }
-    // get all Products
-    static getAll = async (req, res) => {
+    // get all Products By Cat ID
+    static getAllByCatId = async (req, res) => {
         const Category = req.params.catId;
         try {
             let products;

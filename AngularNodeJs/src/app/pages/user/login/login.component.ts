@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
             this._auth.isLogin=false
             this._auth.User=null
           },()=>{
-            this._router.navigateByUrl("/home")
+            this._router.navigateByUrl("/categories")
           })
           
         }

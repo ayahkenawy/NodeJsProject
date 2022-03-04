@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Category } from 'src/app/models/category';
 import { AuthService } from 'src/app/providers/services/auth.service';
 
 @Component({
@@ -7,7 +8,8 @@ import { AuthService } from 'src/app/providers/services/auth.service';
   styleUrls: ['./view-categories.component.css']
 })
 export class ViewCategoriesComponent implements OnInit {
-cats:any=[]
+isLoaded:boolean=false
+cats:Category[]=[]
   constructor(private _auth:AuthService) { }
 
   ngOnInit(): void {
@@ -15,14 +17,14 @@ cats:any=[]
   }
 getAllCats(){
   this._auth.getAllCategories().subscribe((res)=>{
-    this.cats=res
-    console.log(res)
+    this.cats=res.data
+    // console.log(res)
   },
   (e)=>{
 
   }
   ,()=>{
-
+    this.isLoaded=true
   })
 }
 }
