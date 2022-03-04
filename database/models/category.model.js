@@ -7,6 +7,7 @@ const categorySchema = mongoose.Schema({
     categoryId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "category"
+        
     }
 },
     { timestamps: true })
