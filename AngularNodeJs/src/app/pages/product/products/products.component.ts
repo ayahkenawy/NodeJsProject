@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Product } from 'src/app/models/product';
 import { AuthService } from 'src/app/providers/services/auth.service';
 
 
@@ -10,7 +11,8 @@ import { AuthService } from 'src/app/providers/services/auth.service';
 })
 export class ProductsComponent implements OnInit {
   id: any
-  products:any[]=[]
+  products:Product[]=[]
+  isLoaded:boolean=false
   constructor(private _route: ActivatedRoute, private _auth:AuthService) { }
 
   ngOnInit(): void {
@@ -23,8 +25,8 @@ export class ProductsComponent implements OnInit {
   }
 getProducts(id:number){
   this._auth.getProductByCategoryId(id).subscribe(data=>{
-    console.log(data)
-
-  })
+    // console.log(data.data)
+    this.products=data.data
+  },(e)=>{},()=>{  this.isLoaded=true})
 }
 }

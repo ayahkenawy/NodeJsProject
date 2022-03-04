@@ -4,6 +4,7 @@ import { ViewCategoriesComponent } from './pages/category/view-categories/view-c
 import { Error404Component } from './pages/error404/error404.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ProductsComponent } from './pages/product/products/products.component';
+import { SingleProductComponent } from './pages/product/single-product/single-product.component';
 import { LoginComponent } from './pages/user/login/login.component';
 import { RegisterComponent } from './pages/user/register/register.component';
 
@@ -13,7 +14,11 @@ const routes: Routes = [
   {path:"register",component:RegisterComponent},
    {path:"home", component:HomeComponent},
   {path:"categories", component:ViewCategoriesComponent},
-  {path:"product/all/:catId", component:ProductsComponent},
+  {path:"product",children:[
+     {path:"all/:catId", component:ProductsComponent},
+  {path:":id", component:SingleProductComponent}
+  ]},
+ 
   {path:"**", component:Error404Component}
 ];
 

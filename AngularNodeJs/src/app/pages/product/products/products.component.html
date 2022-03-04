@@ -1,3 +1,19 @@
 <section class="container my-5">
-    {{id}}
+    <h3 class="text-primary text-center">All Products</h3>
+    <div class="row" *ngIf="isLoaded;else load" >
+        <div class="alert alert-danger" *ngIf="products.length==0">
+            No Products yet
+        </div>
+        <div class="card m-5" style="width: 18rem;" *ngFor="let product of products">
+            <img class="card-img-top" src="assets/images/product.jpg" alt="{{product.title}}">
+            <div class="card-body">
+                <h5 class="card-title">{{product.title}}</h5>
+                <p class="card-text">{{product.desc}}</p>
+                <a routerLink="/product/{{product._id}}" class="btn btn-primary">Product Details</a>
+            </div>
+        </div>
+    </div>
+    <ng-template #load>
+        <img src="assets/images/loading.gif">
+    </ng-template>
 </section>
