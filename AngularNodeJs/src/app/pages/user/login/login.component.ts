@@ -35,7 +35,16 @@ export class LoginComponent implements OnInit {
           this.msg="Unauthorized"
         },
         ()=>{
-          this._router.navigateByUrl("/home")
+          this._auth.me().subscribe(user=>{
+            this._auth.isLogin=true
+            this._auth.User=user.data
+          },(err)=>{
+            this._auth.isLogin=false
+            this._auth.User=null
+          },()=>{
+            this._router.navigateByUrl("/home")
+          })
+          
         }
       )
     }
