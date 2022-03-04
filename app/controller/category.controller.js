@@ -52,6 +52,7 @@ class Category {
             res.send({ apiStatus: false, data: e.message, message: "Error Fetching Category" })
         }
     }
+    
     //Delete Category
     static delSingle = async (req, res) => {
         try {

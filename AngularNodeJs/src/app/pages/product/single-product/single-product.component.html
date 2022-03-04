@@ -1,0 +1,18 @@
+<section class="container my-5">
+    <h3 class="text-primary text-center">{{product.title}}</h3>
+    <div class="row" *ngIf="isLoaded;else load" >
+        <div class="card mb-3">
+            <img class="card-img-top" src="assets/images/productimg.jpg" alt="{{product.title}}">
+            <div class="card-body">
+              <h5 class="card-title">Title : {{product.title}}</h5>
+              <p class="card-text">Desc : {{product.desc}}</p>
+              <p class="card-text">Color : {{product.color}}</p>
+              <p class="card-text">Quantity : {{product.quantity}}</p>
+              <p class="card-text"><small class="text-muted">Price : {{product.price}}</small></p>
+            </div>
+          </div>
+    </div>
+    <ng-template #load>
+        <img src="assets/images/loading.gif">
+    </ng-template>
+</section>

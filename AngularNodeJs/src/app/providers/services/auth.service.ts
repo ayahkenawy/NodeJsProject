@@ -21,4 +21,13 @@ export class AuthService {
   logout():Observable<any>{
     return this._http.post(`${this.commoneApiURL}user/logout`,null)
   }
+  getAllCategories():Observable<any>{
+    return this._http.get(`${this.commoneApiURL}category/all`)
+  }
+  getProductByCategoryId(catId:number):Observable<any>{
+    return this._http.get(`${this.commoneApiURL}product/all/${catId}`)
+  }
+  getSingleProduct(productId:number):Observable<any>{
+    return this._http.get(`${this.commoneApiURL}product/find/${productId}`)
+  }
 }

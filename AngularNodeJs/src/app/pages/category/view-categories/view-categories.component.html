@@ -1,0 +1,17 @@
+<section class="container my-5">
+    <h3 class="text-primary text-center">All Categories</h3>
+    <div class="row justifiy-content-between" *ngIf="isLoaded;else load">
+        <div class="alert alert-danger" *ngIf="cats.length==0">
+            No Categories yet
+        </div>
+        <div class="col-md-4  p-3" *ngFor="let cat of cats">
+            <div class="border border-3 border-primary rounded">
+                <img src="assets/images/1.jpg" class="img-fluid">
+                <h4 class="m-2 text-danger h6" routerLink="/product/all/{{cat._id}}">{{cat.title}}</h4>
+            </div>
+        </div>
+    </div>
+    <ng-template #load>
+        <img src="assets/images/loading.gif">
+    </ng-template>
+</section>
