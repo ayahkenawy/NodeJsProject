@@ -42,7 +42,7 @@ export class AddProductComponent implements OnInit {
       })
   }
   addProduct(addProductForm: NgForm) {
-    //  console.log(addProductForm.value)
+    console.log(addProductForm.value)
     if (addProductForm.valid) {
       this._auth.addImage(addProductForm.value).subscribe(data => {
          console.log(data)
@@ -54,14 +54,14 @@ export class AddProductComponent implements OnInit {
       }
         ,
         (err) => {
-          this.msg = "Error Adding User"
-          this.flag = false
+          this.msg = "Error Adding Product"
+          // this.flag = false
         },
         () => {
           addProductForm.resetForm()
           this.msg = "Data Added Successfully"
-          this.flag = true
-          this._router.navigateByUrl('/login')
+          // this.flag = true
+          // this._router.navigateByUrl('/login')
         }
       )
 
