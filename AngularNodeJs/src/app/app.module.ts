@@ -15,6 +15,7 @@ import { ViewCategoriesComponent } from './pages/category/view-categories/view-c
 import { ProductsComponent } from './pages/product/products/products.component';
 import { SingleProductComponent } from './pages/product/single-product/single-product.component';
 import { Error404Component } from './pages/error404/error404.component';
+import { AddProductComponent } from './pages/product/add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { Error404Component } from './pages/error404/error404.component';
     ViewCategoriesComponent,
     ProductsComponent,
     SingleProductComponent,
-    Error404Component
+    Error404Component,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
