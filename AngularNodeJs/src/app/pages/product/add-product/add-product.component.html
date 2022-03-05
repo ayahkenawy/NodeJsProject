@@ -6,62 +6,62 @@
         </div>
         <div class="panel-body">
 
-            <form  class="form-horizontal" role="form" >
+            <form  #addProductForm="ngForm" (ngSubmit)="addProduct(addProductForm)" class="form-horizontal" role="form" >
                 <div class="row">
                     <div class="form-group col-md-6 col-12">
                         <label class="col-sm-3  control-label text-primary mb-3 mt-3">Title</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" placeholder="Title">
+                            <input type="text" class="form-control" placeholder="Title" #title="ngModel" ngModel>
                         </div>
                     </div> <!-- form-group col-md-6 col-12 // -->
                     <div class="form-group col-md-6 col-12">
                         <label class="col-sm-3  control-label text-primary mb-3 mt-3">Price</label>
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" placeholder="Price">
+                            <input type="number" class="form-control" placeholder="Price" #price="ngModel" ngModel>
                         </div>
                     </div> <!-- form-group col-md-6 col-12 // -->
                     <div class="form-group col-md-6 col-12">
                         <label class="col-sm-3  control-label text-primary mb-3 mt-3">Desc</label>
                         <div class="col-sm-9">
-                            <textarea class="form-control"></textarea>
+                            <textarea class="form-control" #desc="ngModel" ngModel></textarea>
                         </div>
                     </div> <!-- form-group col-md-6 col-12 // -->
                     <div class="form-group col-md-6 col-12">
                         <label class="col-sm-3  control-label text-primary mb-3 mt-3">Color</label>
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" placeholder="Color">
+                            <input type="text" class="form-control" placeholder="Color" #color="ngModel" ngModel>
                         </div>
                     </div> <!-- form-group col-md-6 col-12 // -->
                     <div class="form-group col-md-6 col-12">
                         <label class="col-sm-3  control-label text-primary mb-3 mt-3">Size</label>
                         <div class="col-sm-9">
-                            <input type="number" class="form-control" placeholder="Size">
+                            <input type="text" class="form-control" placeholder="Size" #size="ngModel" ngModel>
                         </div>
                     </div> <!-- form-group col-md-6 col-12 // -->
                     <div class="form-group col-md-6 col-12">
                         <label class="col-sm-3  control-label text-primary mb-3 mt-3">Quantity</label>
                         <div class="col-sm-3">
-                            <input type="number" class="form-control" placeholder="Quantity">
+                            <input type="number" class="form-control" placeholder="Quantity" #quantity="ngModel" ngModel>
                         </div>
-                    </div> <!-- form-group col-md-6 col-12 // -->
-                    <div class="form-group col-md-6 col-12">
+                     </div> 
+                   <!-- <div class="form-group col-md-6 col-12">
                         <label class="col-sm-3  control-label text-primary mb-3 mt-3">Product Img (jpg/png):</label>
                         <div class="col-sm-3">
-                            <input type="file" (change)="onChangeFile($event)">
+                            <input type="file" (change)="onChangeFile($event)" #img="ngModel" ngModel>
                         </div>
-                    </div> <!-- form-group col-md-6 col-12 // -->
+                    </div>  -->
                     <div class="form-group col-md-6 col-12">
                         <label for="tech" class="col-sm-3  control-label text-primary mb-3 mt-3">Category</label>
-                        <div class="col-sm-3">
-                            <select class="form-control">
-                                <option value="">Category Name</option>
+                        <div class="col-sm-3" >
+                            <select class="form-control"   #categoryId="ngModel" ngModel> 
+                                <option value="{{cat._id}}" *ngFor="let cat of cats">{{cat.title}}</option>
                             </select>
                         </div>
                     </div> <!-- form-group col-md-6 col-12 // -->
                     <hr>
                     <div class="form-group col-md-6 col-12">
                         <div class="col-sm-offset-3 col-sm-9">
-                            <button (click)="uploadImg()" class="btn btn-primary">Submit</button>
+                            <button class="btn btn-primary">Submit</button>
                         </div>
                     </div> <!-- form-group col-md-6 col-12 // -->
                 </div>
