@@ -30,4 +30,7 @@ export class AuthService {
   getSingleProduct(productId:number):Observable<any>{
     return this._http.get(`${this.commoneApiURL}product/find/${productId}`)
   }
+  addImage(data:any):Observable<any>{
+    return this._http.post(`${this.commoneApiURL}product/add`,data)
+  }
 }
